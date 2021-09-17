@@ -1,14 +1,21 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="es">
 
-        <title>Laravel</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="uza - Model Agency HTML5 Template">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <title>@yield('Title','Welcome') | Johhan-SYSTEM</title>
+        <!-- Favicon -->
+        
+        <link rel="icon" href=" {{ asset('uza/img/core-img/favicon.ico') }}">
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
+        <!-- Core Stylesheet -->
+        <link rel="stylesheet" href="{{ asset('uza/style.css') }} ">
         <!-- Styles -->
         <style>
             html, body {
@@ -64,36 +71,217 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
+<!-- Preloader -->
+    <div id="preloader">
+        <div class="wrapper">
+            <div class="cssload-loader"></div>
+        </div>
+    </div>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
+    <!-- ***** Header Area Start ***** -->
+    @include('nav-bar')
+    <!-- ***** Header Area End ***** -->
+
+    <!-- ***** Welcome Area Start ***** -->
+    <section class="welcome-area">
+        <div class="welcome-slides owl-carousel">
+
+            <!-- Single Welcome Slide -->
+            <div class="single-welcome-slide">
+                <!-- Background Curve -->
+                <div class="background-curve">
+                    <img src=" {{ asset('uza/img/core-img/curve-1.png') }} " alt="">
                 </div>
-            @endif
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                <!-- Welcome Content -->
+                <div class="welcome-content h-75">
+                    <div class="container h-100">
+                        <div class="row h-100 align-items-center">
+                            <!-- Welcome Text -->
+                            <div class="col-12 col-md-6">
+                                <div class="welcome-text">
+                                    <h2 >Sistema Contable <span>PALOMINO</span></h2>
+                                    @if (Route::has('login'))
+                                        @auth
+                                            <h5 >Usted esta logeado estimad@: <strong>" {{ Auth::user()->nombre }}  {{ Auth::user()->apellido }}"</strong></h5>
+                                        @else
+                                            <h5 >Accounting system</h5>
+                                        @endauth
+                                    @endif
+                                    @if (Route::has('login'))
+                                        @auth
+                                            <a href="{{ url('home') }}" class="btn uza-btn btn-2 tooltipsC"  title="Presione para ir al menú de Inicio">Home</a>
+                                        @else
+                                            <a href="{{ route('login') }}" class="btn uza-btn btn-2"> Login</a>
+                                        @endauth
+                                    @endif
+                                </div>
+                            </div>
+                            <!-- Welcome Thumbnail -->
+                            <div class="col-12 col-md-6">
+                                <div class="welcome-thumbnail">
+                                    <img src="{{ asset('uza/img/bg-img/2.png') }} " alt="" data-animation="slideInRight" data-delay="400ms">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            <!-- Single Welcome Slide -->
+            <div class="single-welcome-slide">
+                <!-- Background Curve -->
+                <div class="background-curve">
+                    <img src="{{ asset('uza/img/core-img/curve-1.png') }} " alt="">
+                </div>
+
+                <!-- Welcome Content -->
+                <div class="welcome-content h-75">
+                    <div class="container h-100">
+                        <div class="row h-100 align-items-center">
+                            <!-- Welcome Text -->
+                            <div class="col-12 col-md-6">
+                                <div class="welcome-text">
+                                    <h2 >Sistema Contable <span>PALOMINO</span></h2>
+                                    @if (Route::has('login'))
+                                        @auth
+                                            <h5 >Usted esta logeado estimad@: <strong>" {{ Auth::user()->nombre }}  {{ Auth::user()->apellido }}"</strong></h5>
+                                        @else
+                                            <h5 >Accounting system</h5>
+                                        @endauth
+                                    @endif
+                                    @if (Route::has('login'))
+                                        @auth
+                                            <a href="{{ url('home') }}" class="btn uza-btn btn-2 tooltipsC"  title="Presione para ir al menú de Inicio">Home</a>
+                                        @else
+                                            <a href="{{ route('login') }}" class="btn uza-btn btn-2"> Login</a>
+                                        @endauth
+                                    @endif
+                                </div>
+                            </div>
+                            <!-- Welcome Thumbnail -->
+                            <div class="col-12 col-md-6">
+                                <div class="welcome-thumbnail">
+                                    <img src="{{ asset('uza/img/bg-img/3.png') }} " alt="" data-animation="slideInRight" data-delay="400ms">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Single Welcome Slide -->
+            <div class="single-welcome-slide">
+                <!-- Background Curve -->
+                <div class="background-curve">
+                    <img src="{{ asset('uza/img/core-img/curve-1.png') }} " alt="">
+                </div>
+
+                <!-- Welcome Content -->
+                <div class="welcome-content h-75">
+                    <div class="container h-100">
+                        <div class="row h-100 align-items-center">
+                            <!-- Welcome Text -->
+                            <div class="col-12 col-md-6">
+                                <div class="welcome-text">
+                                    <h2 >Sistema Contable <span>PALOMINO</span></h2>
+                                    @if (Route::has('login'))
+                                        @auth
+                                            <h5 >Usted esta logeado estimad@: <strong>" {{ Auth::user()->nombre }}  {{ Auth::user()->apellido }}"</strong></h5>
+                                        @else
+                                            <h5 >Accounting system</h5>
+                                        @endauth
+                                    @endif
+                                    @if (Route::has('login'))
+                                        @auth
+                                            <a href="{{ url('home') }}" class="btn uza-btn btn-2 tooltipsC"  title="Presione para ir al menú de Inicio">Home</a>
+                                        @else
+                                            <a href="{{ route('login') }}" class="btn uza-btn btn-2"> Login</a>
+                                        @endauth
+                                    @endif
+                                </div>
+                            </div>
+                            <!-- Welcome Thumbnail -->
+                            <div class="col-12 col-md-6">
+                                <div class="welcome-thumbnail">
+                                    <img src="{{ asset('uza/img/bg-img/4.png') }} " alt="" data-animation="slideInRight" data-delay="400ms">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-    </body>
+    </section>
+    <!-- ***** Welcome Area End ***** -->
+
+
+    <!-- ***** Footer Area Start ***** -->
+    <footer class="footer-area section-padding-75-0">
+        <div class="container">
+            <div class="row justify-content-between">
+
+                <!-- Single Footer Widget -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-footer-widget mb-75">
+                        <!-- Widget Title -->
+                        <h4 class="widget-title">Contáctanos</h4>
+
+                        <!-- Footer Content -->
+                        <div class="footer-content mb-15">
+                            <h3>(+502) 40802648</h3>
+                            <p>SLT, Guatemala <br> ajacintog1@miumg.edu.gt</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Single Footer Widget -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-footer-widget mb-80">
+                        <!-- Widget Title -->
+                        <h4 class="widget-title">Desarrollador Web</h4>
+                        <p>Ana Steffanny Jacinto</p>
+                        <p>Cada linea de código, es significativo para cada proceso...</p>
+
+                        <!-- Copywrite Text -->
+                        <div class="copywrite-text mb-30">
+                            <p>&copy; Copyright <script>document.write(new Date().getFullYear());</script> <a href="{{ route('login') }}">All rights reserved | OFICINA CONTABLE PALOMINO</a>.</p>
+                        </div>
+
+                        <!-- Social Info -->
+                        <div class="footer-social-info">
+                            <a href="#" class="facebook" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+             <div class="row" style="margin-bottom: 30px;"> 
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | OFICINA CONTABLE PALOMINO
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </div>
+
+        </div>
+    </footer>
+    <!-- ***** Footer Area End ***** -->
+
+    <!-- ******* All JS Files ******* -->
+    <!-- jQuery js -->
+    <script src=" {{ asset('uza/js/jquery.min.js') }}"></script>
+    <!-- Popper js -->
+    <script src=" {{ asset('uza/js/popper.min.js') }}"></script>
+    <!-- Bootstrap js -->
+    <script src=" {{ asset('uza/js/bootstrap.min.js') }}"></script>
+    <!-- All js -->
+    <script src=" {{ asset('uza/js/uza.bundle.js') }}"></script>
+    <!-- Active js -->
+    <script src=" {{ asset('uza/js/default-assets/active.js') }}"></script>
+
+    
+
+</body>
 </html>
