@@ -22,7 +22,7 @@
       <div class="card-header">
         <div class="text-center">
               <small style="font-size:30px;  color:black">
-                <strong>LIBRO DIARIO | SYS-JOHHAN</strong>
+                <strong>LIBRO DIARIO | OFICINA CONTABLE PALOMINO</strong>
               </small>
         </div>
       </div>

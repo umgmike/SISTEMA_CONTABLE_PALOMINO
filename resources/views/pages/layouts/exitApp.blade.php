@@ -12,21 +12,21 @@
                             @csrf
                             @if(Auth::check())
                                 @if (Auth::user()->id_rol == 1)
-                                	Good bye. Vuelva pronto a {{ Auth::user()->nombreEmpresa }}
+                                	Good bye. Vuelva pronto {{ Auth::user()->nombre }} {{ Auth::user()->apellido }}
                                 	<button type="submit" class="bg-navy">Logout</button>
                                 @endif
                             @endif
 
                             @if(Auth::check())
                                 @if (Auth::user()->id_rol == 2)
-                                	Good bye. Vuelva pronto a {{ Auth::user()->nombreEmpresa }}
+                                	Good bye. Vuelva pronto {{ Auth::user()->nombre }} {{ Auth::user()->apellido }}
                                 	<button type="submit" class="bg-navy">Logout</button>
                                 @endif
                             @endif
 
                             @if(Auth::check())
                                 @if (Auth::user()->id_rol == 3)
-                                	Good bye. Vuelva pronto a {{ Auth::user()->nombreEmpresa }}
+                                	Good bye. Vuelva pronto {{ Auth::user()->nombre }} {{ Auth::user()->apellido }}
                                 	<button type="submit" class="bg-navy">Logout</button>
                                 @endif
                             @endif

@@ -33,7 +33,7 @@
       <div class="card-header">
         <div class="text-center">
               <small style="font-size:30px;  color:black">
-                <strong>CATEGORIA DE CUENTAS CONTABLES | SYS-JOHHAN</strong>
+                <strong>CATEGORIA DE CUENTAS CONTABLES | OFICINA CONTABLE PALOMINO</strong>
               </small>
         </div>
         <div class="dropdown notifications-menu text-center"><b>Cantidad de registros :</b>

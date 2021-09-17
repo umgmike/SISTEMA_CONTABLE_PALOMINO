@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Title -->
-    <title>@yield('Title','Welcome') | SYS-JOHHAN</title>
+    <title>@yield('Title','Welcome') | OFICINA CONTABLE PALOMINO</title>
 
     <!-- Favicon -->
     <link rel="icon" href=" {{ asset('uza/img/core-img/favicon.ico') }} ">

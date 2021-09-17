@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Nomenclatura de importadora épocas | SYS-JOHHAN</title>
+    <title>Nomenclatura de importadora épocas | OFICINA CONTABLE PALOMINO</title>
     <style>
       caption 
         {     
@@ -381,7 +381,7 @@
     if ( isset($pdf) ) {
       $pdf->page_script('
       $font = $fontMetrics->get_font("Arial, Helvetica, sans-serif", "normal");
-      $pdf->text(220, 810, "Nomenclatura de importadora épocas | SYS-JOHHAN, Pág $PAGE_NUM de $PAGE_COUNT", $font, 10);
+      $pdf->text(220, 810, "Nomenclatura de importadora épocas | OFICINA CONTABLE PALOMINO, Pág $PAGE_NUM de $PAGE_COUNT", $font, 10);
       ');
     }
 
