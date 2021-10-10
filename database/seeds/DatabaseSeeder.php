@@ -17,6 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ContribuyenteTableSeeder::class);
         $this->call(RegimenesTableSeeder::class);
         $this->call(EmpresasTableSeeder::class);
-        $this->call(RelBitacoraTableSeeder::class);
+        //$this->call(RelBitacoraTableSeeder::class);
     }
 }
