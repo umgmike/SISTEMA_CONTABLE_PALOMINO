@@ -1,17 +1,17 @@
 @extends('pages.layouts.layout')
 
 @section('Title')
-  Crear usuarios
+  Crear empresa
 @endsection
 
 @section("scripts")
-<script src="{{asset("assets/pages/users/NewUser.js")}}" type="text/javascript"></script>
+<script src="{{asset("assets/pages/companies/new-companies.js")}}" type="text/javascript"></script>
 @endsection
 
 @section('content')
-    @section('nombre_ruta', 'Creación de usuarios')
-    @section('dashboard_nombre', 'Listado de usuarios')
-    @section('dashboard_ruta', route('page.usuarios'))
+    @section('nombre_ruta', 'Creación de empresas')
+    @section('dashboard_nombre', 'Listado de empresas')
+    @section('dashboard_ruta', route('page.empresas'))
     @include('pages.navbar.button-principal')
 
 
@@ -33,25 +33,25 @@
 
                     <div class="card-body">
                         <div class="ribbon-wrapper ribbon-xl">
-                            <div class="ribbon bg-gray-light">Create users</div>
+                            <div class="ribbon bg-gray-light">Create companies</div>
                         </div>
                     </div>
 
-                    <form action="{{ route('page.save-users') }}" id="UsersCreate" method="POST" autocomplete="off">
+                    <form action="{{ route('page.empresas.save') }}" id="CompanyCreate" method="POST" autocomplete="off">
                     @csrf
                         <div class="card-body">
-                            @include('pages.users.form-create')
+                            @include('pages.empresas.form-create')
                             <div class="text-center">
-                                @if (count($roles))
-                                    <button type="submit" class="btn btn-outline-info mt-40" aria-hidden="true" class="tooltipsC" title="Guardar registros {{ Auth::user()->nombreEmpresa }}"> Guardar </button>
-                                @elseif ($roles != '')
+                                @if (count($regimen) && count($contribuyente))
+                                    <button type="submit" class="btn btn-outline-info mt-40" aria-hidden="true" class="tooltipsC" title="Guardar registros"> Guardar </button>
+                                @elseif ($regimen != '' && $contribuyente != '')
                                     <button type="reset" class="btn bg-gray btn-sm">Cancelar</button>
                                 @endif
                             </div>
                         </div>
                     </form>
                 </div>
-                <a href="" class="btn btn-success btn-block "></a>
+                <a href="" class="btn btn-danger btn-block"></a>
             </div>
         </div>
     </div>

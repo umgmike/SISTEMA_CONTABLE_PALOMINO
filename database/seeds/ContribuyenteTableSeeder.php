@@ -18,7 +18,7 @@ class ContribuyenteTableSeeder extends Seeder
         	'nombre' => 'BuenaVentura',
         	'apellido' => 'Rosales',
         	'telefono' => '12322345',
-        	'genero' => 'M',
+        	'id_genero' => 1,
         	'fecha_nacimiento' => '1995-09-15'
         ]);
 
@@ -27,7 +27,7 @@ class ContribuyenteTableSeeder extends Seeder
         	'nombre' => 'Maria',
         	'apellido' => 'Jacinto',
         	'telefono' => '87364827',
-        	'genero' => 'F',
+        	'id_genero' => 2,
         	'fecha_nacimiento' => '1995-09-11'
         ]);
 
@@ -36,7 +36,7 @@ class ContribuyenteTableSeeder extends Seeder
         	'nombre' => 'Juan Pedro',
         	'apellido' => 'Solares',
         	'telefono' => '98763542',
-        	'genero' => 'M',
+        	'id_genero' => 1,
         	'fecha_nacimiento' => '1993-09-11'
         ]);
 
@@ -46,7 +46,7 @@ class ContribuyenteTableSeeder extends Seeder
         	'nombre' => 'Mario',
         	'apellido' => 'Morales',
         	'telefono' => '12342345',
-        	'genero' => 'M',
+        	'id_genero' => 1,
         	'fecha_nacimiento' => '1995-09-11'
         ]);
 
@@ -55,7 +55,7 @@ class ContribuyenteTableSeeder extends Seeder
         	'nombre' => 'Marta',
         	'apellido' => 'Goes',
         	'telefono' => '90908765',
-        	'genero' => 'M',
+        	'id_genero' => 1,
         	'fecha_nacimiento' => '1991-09-10'
         ]);
 
@@ -64,7 +64,7 @@ class ContribuyenteTableSeeder extends Seeder
         	'nombre' => 'Martina',
         	'apellido' => 'Juarez',
         	'telefono' => '25364738',
-        	'genero' => 'F',
+        	'id_genero' => 2,
         	'fecha_nacimiento' => '1998-09-10'
         ]);
     }

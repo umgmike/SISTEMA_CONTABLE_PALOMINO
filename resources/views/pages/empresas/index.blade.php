@@ -16,7 +16,7 @@
 
 	<div class="portfolio-menu text-center mb-30">
     	<div class="col-lg-3">
-      		<a href="{{ route('page.create-users') }}" class="btn btn-primary btn-block tooltipsC" title="Crear nueva empresa">
+      		<a href=" {{ route('page.empresas.create') }} " class="btn btn-primary btn-block tooltipsC" title="Crear nueva empresa">
         		<i class="fa fa-fw fa-plus-circle"></i> Crear nueva empresa
       		</a>
     	</div>
@@ -92,7 +92,7 @@
                   @endif
 
                   @if($item->condicion == 1)
-                    <form action="{{route('page.delete', ['id' => $item->id])}}" class="d-inline form-eliminar" method="POST">
+                    <form action="{{route('page.empresas.delete', ['id' => $item->id])}}" class="d-inline form-eliminar" method="POST">
                       @csrf @method("delete")
                       <button type="submit" class="btn btn-outline-danger btn-sm  btn-accion-tabla eliminar tooltipsC" title="Desactivar registro">
                           <i class="fa fa-trash"></i>
@@ -100,7 +100,7 @@
                     </form>
 
                   @else
-                    <form action="{{route('page.delete', ['id' => $item->id])}}" class="d-inline form-eliminar" method="POST">
+                    <form action="{{route('page.empresas.delete', ['id' => $item->id])}}" class="d-inline form-eliminar" method="POST">
                       @csrf @method("delete")
                       <button type="submit" class="btn btn-outline-success btn-sm  btn-accion-tabla eliminar tooltipsC" title="Activar registro">
                         <i class="fa fa-recycle"></i>
@@ -129,4 +129,9 @@
     </div>
     </div>
   </div>
+
+@endsection
+
+@section('uza_scripts')
+<script src="{{asset("assets/pages/campanies/contribuyente.js")}}" type="text/javascript"></script>
 @endsection

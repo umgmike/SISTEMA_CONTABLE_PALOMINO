@@ -22,7 +22,7 @@ class CreateEmpresaTable extends Migration
             $table->string('nit', 10)->unique();
             $table->year('anyo_contable');
             $table->string('nombre_establecimiento', 250)->unique();
-            $table->text('descripcion');
+            $table->text('descripcion')->nullable();
             $table->boolean('condicion')->default(1);
             $table->timestamps();
         });

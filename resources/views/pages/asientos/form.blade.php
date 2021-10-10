@@ -20,7 +20,7 @@
     <div class="col-lg-5 offset-2">
         <label for="id_cuenta"  id="id_cuenta" class="control-label"><strong>Seleccione cuenta: </strong></label>
         <div class="input-group input-group-sm">
-            <select name="id_cuenta" id="nombreCuenta" class="form-control select2 tooltipsC"  title="Seleccione categoría">
+            <select name="id_cuenta" id="nombreCuenta" class="form-control select2 tooltipsC col-md-10"  title="Seleccione categoría">
               @if (count($daily))
 
                   @foreach($daily as $class)
@@ -35,7 +35,7 @@
                     <option value="">No se encuentró ningún registro</option>
                 @endif
             </select>
-                <a href="{{ route('page.create.cuentas') }}" class=" tooltipsC" title="Agregar nueva cuenta">
+                <a style="margin-left: 5px;" href="{{ route('page.create.cuentas') }}" class=" tooltipsC" title="Agregar nueva cuenta">
                     <i class="fa fa-plus btn btn-outline-secondary input-group"></i>
                 </a>
         </div>

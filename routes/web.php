@@ -58,6 +58,14 @@ Route::group(['namespace' => 'OficinaContablePalomino', 'middleware' => 'auth'],
 
 
 	Route::get('empresas', 'EmpresasController@index')->name('page.empresas')->middleware('auth');
+	Route::get('empresas/create', 'EmpresasController@create')->name('page.empresas.create')->middleware('auth');
+	Route::post('empresas/save', 'EmpresasController@store')->name('page.empresas.save')->middleware('auth');
+	Route::delete('empresas/{id}', 'EmpresasController@destroy')->name('page.empresas.delete')->middleware('auth');
+
+
+	Route::get('contrinuyente/create', 'ContribuyenteController@create')->name('page.contribuyente.create')->middleware('auth');
+	Route::post('contrinuyente/save', 'ContribuyenteController@store')->name('page.contribuyente.save')->middleware('auth');
+
 	Route::get('Listado-general', 'GeneralController@ListGeneral')->name('pages.list-general')->middleware('auth');
 
 });

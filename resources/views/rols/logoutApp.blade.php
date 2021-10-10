@@ -16,7 +16,7 @@
                                 <p>para reactivar su cuenta</p>
                                 <button type="submit" class="bg-olive">Retornar</button>
                                 @else
-                                Good bye. Vuelva pronto {{ Auth::user()->nombre }} {{ Auth::user()->apellido }}
+                                Bye. {{ Auth::user()->nombre }} {{ Auth::user()->apellido }}
                                 <button type="submit" class="bg-navy">Logout</button>
                                 @endif
                             @endif

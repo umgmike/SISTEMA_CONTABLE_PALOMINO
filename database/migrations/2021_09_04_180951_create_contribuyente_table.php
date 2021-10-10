@@ -19,7 +19,8 @@ class CreateContribuyenteTable extends Migration
             $table->string('nombre')->nullable();;
             $table->string('apellido');
             $table->string('telefono', 16)->unique()->nullable();
-            $table->string('genero', 1)->nullable();;
+            $table->unsignedInteger('id_genero');
+            $table->foreign('id_genero','fk_contribuyente_genero')->references('id')->on('genero');
             $table->date('fecha_nacimiento')->nullable();
             $table->timestamps();
         });

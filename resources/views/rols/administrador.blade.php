@@ -70,7 +70,7 @@
                                     <nav>
                                         <ul class="our-link">
                                             <li><a href=" {{ route('page.empresas') }} ">Listado de empresas</a></li>
-                                            <li><a href=" ">Crear nuevas empresas</a></li>
+                                            <li><a href=" {{ route('page.empresas.create') }} ">Crear nuevas empresas</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -90,21 +90,21 @@
                             <div class="post-content" style="height: 150px">
                                 <div class="single-cf-area d-flex align-items-center mb-75">
 
-                                    <h2><span class="counter"> </span></h2>
+                                    <h2><span class="counter">{{ count($datos['AllCuenta']) }} </span></h2>
 
                                     <div class="cf-text">
                                         <h4>Cuentas</h4>
                                         <small style="font-size: 15px">Activas : <span class="counter">
-                                                 </span><br></small>
+                                                 {{ count($datos['CuentaActive']) }} </span><br></small>
                                         <small style="font-size: 15px">Inactivas : <span class="counter text-danger">
-                                                </span></small><br>
+                                                {{ count($datos['CuentaInactiveAll']) }} </span></small><br>
 
                                     </div>
                                 </div><br>
                                 <div class="single-footer-widget mt-10">
                                     <nav>
                                         <ul class="our-link">
-                                            <li><a href="">Catálogo de cuentas</a></li>
+                                            <li><a href="{{ route('page.cuentas') }}">Catálogo de cuentas</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -123,7 +123,7 @@
                             <div class="post-content" style="height: 150px">
                                 <div class="single-cf-area d-flex align-items-center mb-75">
 
-                                    <h2><span class="counter">  </span></h2>
+                                    <h2><span class="counter">{{ count($datos['AllCatAccounts']) }}   </span></h2>
 
                                     <div class="cf-text">
                                         <h4>Categoria de cuentas</h4>
@@ -132,7 +132,7 @@
                                 <div class="single-footer-widget mt-10">
                                     <nav>
                                         <ul class="our-link">
-                                            <li><a href="">Ver categorias</a></li>
+                                            <li><a href=" {{ route('cat.list') }} ">Ver categorias</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -151,21 +151,21 @@
                             <div class="post-content" style="height: 150px">
                                 <div class="single-cf-area d-flex align-items-center mb-80">
 
-                                    <h2><span class="counter"> </span></h2>
+                                    <h2><span class="counter"> {{ count($datos['AllAsiento']) }}</span></h2>
                                     <div class="cf-text">
                                         <h4>Assientos contables</h4>
                                         <small style="font-size: 15px">Registrados : <span class="counter">
-                                                 </span><br></small>
+                                            {{ count($datos['AsientoActive']) }} </span><br></small>
                                         <small style="font-size: 15px">Anulados : <span class="counter text-danger">
-                                                 </span></small><br>
+                                            {{ count($datos['AsientoInactiveAll']) }}</span></small><br>
                                     </div>
                                 </div>
                             </div>
                             <div class="single-footer-widget mb-75">
                                 <nav>
                                     <ul class="our-link">
-                                        <li><a href="">Crear asientos</a></li>
-                                        <li><a href="">Libro diario</a></li>
+                                        <li><a href=" {{ route('page.asiento-create') }}">Crear asientos</a></li>
+                                        <li><a href=" {{ route('pdf_asientoLD') }} ">Libro diario</a></li>
                                     </ul>
                                 </nav>
                             </div>

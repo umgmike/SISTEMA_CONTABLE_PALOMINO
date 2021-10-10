@@ -4,19 +4,12 @@ namespace App\Http\Controllers\OficinaContablePalomino;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\OficinaContablePalomino\Regimen;
-use App\Models\OficinaContablePalomino\Empresa;
+use App\Models\OficinaContablePalomino\Genero;
 use App\Models\OficinaContablePalomino\Contribuyente;
 use Alert;
 
-class EmpresasController extends Controller
+class ContribuyenteController extends Controller
 {
-
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -24,8 +17,7 @@ class EmpresasController extends Controller
      */
     public function index()
     {
-        $empresas = Empresa::with('regimenes')->orderBy('id_regimen', 'ASC')->get();
-        return view('pages.empresas.index', compact('empresas'));
+        //
     }
 
     /**
@@ -35,9 +27,8 @@ class EmpresasController extends Controller
      */
     public function create()
     {
-        $regimen = Regimen::all();
-        $contribuyente = Contribuyente::all();
-        return view('pages.empresas.create', compact('regimen', 'contribuyente'));
+        $gender = Genero::all();
+        return view('pages.empresas.contribuyente.create', compact('gender'));
     }
 
     /**
@@ -49,15 +40,15 @@ class EmpresasController extends Controller
     public function store(Request $request)
     {
 
-        $registro = new Empresa();
-        $registro->id_regimen = $request->id_regimen;
-        $registro->id_contribuyente = $request->id_contribuyente;
+        $registro = new Contribuyente();
         $registro->nit = $request->nit;
-        $registro->anyo_contable = $request->anyo_contable;
-        $registro->nombre_establecimiento = $request->nombre_establecimiento;
-         $registro->descripcion = $request->descripcion;
+        $registro->nombre = $request->nombre;
+        $registro->apellido = $request->apellido;
+        $registro->telefono = $request->telefono;
+        $registro->id_genero = $request->id_genero;
+         $registro->fecha_nacimiento = $request->fecha_nacimiento;
         $registro->save();
-        toast('Empresa: '. $registro->nombre_establecimiento.' '. 'creada con éxito','success')->timerProgressBar()->autoClose(4500);
+        toast('Contribuyente: '. $registro->nombre.' '. $registro->apellido.' '. 'creado con éxito','success')->timerProgressBar()->autoClose(4500);
         return redirect()->route('page.empresas.create');
     }
 
@@ -101,19 +92,8 @@ class EmpresasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, $id)
+    public function destroy($id)
     {
-        if ($request->ajax()) {
-            if ($empresa = Empresa::findOrFail($id)) {
-                $empresa->condicion = $empresa->condicion ? '0' : '1';
-                $empresa->update();
-                toast('Estado de : '.$empresa->nombre_establecimiento.' '. 'cambiada con éxito','info')->timerProgressBar()->autoClose(4800);
-                return response()->json(['mensaje' => 'ok']);
-            } else {
-                return response()->json(['mensaje' => 'ng']);
-            }
-        } else {
-            abort(404);
-        }
+        //
     }
 }
