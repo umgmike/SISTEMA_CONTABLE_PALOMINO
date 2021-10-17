@@ -51,7 +51,7 @@
                                     </li>
 
                                     <li class="breadcrumb-item">
-                                        <a href=" "><i class="fa fa-book"></i> Inventario</a>
+                                        <a href=" {{ route('page.inicio.inventario') }} "><i class="fa fa-book"></i> Inventario</a>
                                     </li>
 
                                     <li><a><i class="fa fa-object-ungroup"></i> Asientos contables</a>
