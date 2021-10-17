@@ -7,7 +7,7 @@
 @section('content')
   @section('nombre_ruta', 'Catálogo de inventarios')
   @section('dashboard_nombre', 'Catálogo de inventarios')
-  @section('dashboard_ruta', route('page.inicio'))
+  @section('dashboard_ruta', route('page.inicio.inventario'))
   @include('pages.navbar.button-secondary')
 
   <div class="col-12 col-sm-12 col-lg-12 col-xl-12">
@@ -37,7 +37,7 @@
           <div class="row offset-2">
             <div class="col-lg-10">
               <label for="descripcion" class="control-label"><strong>Descripción : </strong></label>
-              <textarea type="text" id="descripcion" rows="6" name="descripcion" class="form-control" placeholder="Escriba descripcion del asiento contable" title="Escriba descripcion del asiento contable"></textarea required>
+              <textarea type="text" id="descripcion" rows="6" name="descripcion" class="form-control" placeholder="Escriba descripcion del inventario" title="Escriba descripcion del inventario"></textarea required>
             </div>
           </div> 
 
@@ -85,8 +85,11 @@
 
       var t_d = $("#totalI").text();
 
-      if (t_d !== 0 || t_d !== '' ) {
+      if (t_d == 0 || t_d == '' ) {
 
+        var id_usuario = @php
+          echo Auth::user()->id;
+        @endphp;
         var monto_total = $("#totalI").text();
         var descripcion = $("#descripcion").val(); 
         var myTableArray = [];
@@ -114,6 +117,7 @@
           },
 
           data: {
+            id_usuario: id_usuario,
             monto_total: monto_total,
             descripcion: descripcion,
             tab: myTableArray,
@@ -124,7 +128,7 @@
           },
           error: function(msj) {}
         });
-      } else if (t_d == 0) {
+      } else if (t_d === 0 || t_d === "") {
         alert('El inventario está inicializada en 0, Por favor registre datos para ser almacenados con éxito')
       }
     });
@@ -154,7 +158,7 @@
         $('#cuerpo').append(fila);
 
       } else {
-        alert('Por favor rellene la informacion para guardar su informacion');
+        alert('Por favor rellene la informacion para guardar con exito');
       }
 
       document.getElementById("sub_total").value = "0";
@@ -195,6 +199,7 @@
 
     function validar() {
       var descripcion = document.getElementById('descripcion').value;
+      var montoVerificacion = document.getElementById("totalI").value;
 
       if (descripcion.trim() == '') {
         alert('Por favor ingrese una descripcion del inventario');

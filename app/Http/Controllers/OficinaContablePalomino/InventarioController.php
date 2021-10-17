@@ -28,6 +28,7 @@ class InventarioController extends Controller
         $inventarios = DB::table('inventario_final AS i')
             ->join('usuario AS u', 'i.id_usuario', '=', 'u.id')
             ->select(
+                'i.id',
                 'u.usuario',
                 'i.id_usuario',
                 'i.monto_total',
@@ -61,31 +62,33 @@ class InventarioController extends Controller
      */
     public function store(Request $request)
     {
+
+        $fecha = Carbon::now();
+
         if($request->ajax()){
+
+            $request->request->add(['fecha_inventario' => $fecha]);
 
             Inventario::create($request->all());
 
-            $main = Inventario::latest('id')->first();
-            $main->id_usuario = Auth::user()->id;
-            $main->save();
+            $data = Inventario::latest('id')->first();
 
             $table = [];
             $uno = '0';
-            $tres = '2';
-            $cuatro = '4';
+            $dos = '1';
+            $tres = '3';
             for ($i= 0; $i < 1; $i++) {
                 foreach($request->tab as $reg){
                     $table[] = [
                         'id_inventario'  => $data->id,
-                        'id_cuenta'  => $reg[$cuatro],
-                        'sub_total'  => $reg[$tres],
+                        'id_cuenta'  => $reg[$tres],
+                        'sub_total'  => $reg[$dos],
                     ];
                 }
             }
 
-
             Db::table('detalle_inventario')->insert($table);
-            toast('Partida No. '.' '. 'almacenada con éxito','success')->timerProgressBar();
+            toast('Inventario. '.' '. 'almacenado con éxito','success')->timerProgressBar();
             return response()->json([
                 "mensaje" => $request->all()
             ]);
@@ -100,7 +103,35 @@ class InventarioController extends Controller
      */
     public function show($id)
     {
-        //
+        $inventario = DB::table('inventario_final')->where('id', '=', $id)->first();
+
+        $sql = '
+
+            SELECT
+                i.fecha_inventario,
+                cat.codigo,
+                cue.codigoCuenta,
+                cue.nombreCuenta,
+                det.sub_total,
+                0 as subtotal
+            FROM inventario_final i
+            INNER JOIN detalle_inventario as det ON i.id = det.id_inventario
+            INNER JOIN cuenta as cue ON det.id_cuenta = cue.id
+            INNER JOIN categoria as cat ON cue.id_categoria = cat.id
+            WHERE i.id='.$id;
+
+        $detalle = DB::select($sql);
+
+        $totalInventario = 0;
+
+        foreach ($detalle as $key => $value) {
+            $subtotal = ($detalle[$key]->sub_total);
+            $detalle[$key]->subtotal = $subtotal;
+            $totalInventario += $subtotal;
+
+        }
+
+        return view('pages.inventario.view', compact('inventario', 'detalle', 'totalInventario'));
     }
 
     /**
@@ -132,8 +163,19 @@ class InventarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        if ($request->ajax()) {
+            if ($inventory = Inventario::findOrFail($id)) {
+                $inventory->condicion = $inventory->condicion ? '0' : '1';
+                $inventory->update();
+                toast('Estado inventario. : '.' '. 'cambiada con éxito','info')->timerProgressBar()->autoClose(4800);
+                return response()->json(['mensaje' => 'ok']);
+            } else {
+                return response()->json(['mensaje' => 'ng']);
+            }
+        } else {
+            abort(404);
+        }
     }
 }

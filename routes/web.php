@@ -75,5 +75,6 @@ Route::group(['namespace' => 'OficinaContablePalomino', 'middleware' => 'auth'],
 	Route::resource('crear_inventario', 'InventarioController')->middleware('auth');
 	Route::post('Inventario/save', 'InventarioController@store')->name('inventory.store')->middleware('auth');
 	Route::delete('Inventario/{id}', 'InventarioController@destroy')->name('page.inventory.delete')->middleware('auth');
+	Route::get('Inventario/{id}/view', 'InventarioController@show')->name('page-inventory.daily')->middleware('auth');
 
 });

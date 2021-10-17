@@ -57,10 +57,10 @@
         <table class="table" id="TableStyle">
           <thead>
             <tr> 
-              <th class="text-center">Responsable</th>
-              <th class="text-center">Fecha Inventario</th>
-              <th class="text-right">Monto</th>
-              <th class="text-center">Descripcion</th>
+              <th >Responsable</th>
+              <th >Fecha Inventario</th>
+              <th >Monto</th>
+              <th >Descripcion</th>
               <th class="text-center">Estado</th>
               <th class="text-center">Acciones</th>
             </tr>
@@ -70,36 +70,47 @@
             @foreach ($inventarios as $item)
               @if ($item->condicion == 1)
               <tr>
-                <td class="text-center"> {{ $item->usuario }}   </td>
-                <td class="text-center">  {{ $item->fecha_inventario }} </td>
-                <td class="text-right">Q. {{ number_format($item->monto_total,2) }}   </td>
-                <td class="text-center"> {{ $item->descripcion }}  </td>
+                <td > {{ $item->usuario }}   </td>
+                <td >  {{ $item->fecha_inventario }} </td>
+                <td class="text-right" >{{ number_format($item->monto_total,2) }}   </td>
+                <td > {{ $item->descripcion }}  </td>
                 <td class="text-center">
-                      <button type="submit" class="btn btn-outline-danger btn-sm  tooltipsC" title="Partida anulada">
+                    @if($item->condicion == 1)
+                      <button type="submit" class="btn btn-outline-info btn-sm tooltipsC" title="Registrada">
+                        <i class="fa fa-check-circle-o"> Registrado </i>
+                      </button>
+                    @elseif($item->condicion == 0)
+                      <button type="submit" class="btn btn-outline-danger btn-sm  tooltipsC" title="Anulado">
                         <i class="fa fa-times-circle-o"> Anulado</i>
                       </button>
-
+                    @endif
                 </td>
 
                 <td class="text-center">
 
+                  @if($item->condicion == 1)
+                        <a href="{{route('page-inventory.daily', ['id' => $item->id])}}" class=" tooltipsC" title="Ver detalle">
+                          <i class="fa fa-eye btn btn-outline-secondary btn-sm"></i>
+                        </a>
+                    @endif
 
-
-                      <form action="" class="d-inline form-eliminar" method="POST">
+                  @if($item->condicion == 1)
+                      <form action="{{route('page.inventory.delete', ['id' => $item->id])}}" class="d-inline form-eliminar" method="POST">
                         @csrf @method("delete")
-                        <button type="submit" class="btn btn-outline-danger btn-sm  btn-accion-tabla eliminar tooltipsC" title="Anular partida No. ">
+                        <button type="submit" class="btn btn-outline-danger btn-sm  btn-accion-tabla eliminar tooltipsC" title="Anular">
                             <i class="fa fa-trash"></i>
                         </button>
                       </form>
 
-                      <form action="" class="d-inline form-eliminar" method="POST">
+                    @else
+                      <form action="{{route('page.inventory.delete', ['id' => $item->id])}}" class="d-inline form-eliminar" method="POST">
                         @csrf @method("delete")
-                        <button type="submit" class="btn btn-outline-success btn-sm  btn-accion-tabla eliminar tooltipsC" title="Activar partida No. ">
+                        <button type="submit" class="btn btn-outline-success btn-sm  btn-accion-tabla eliminar tooltipsC" title="Activar">
                           <i class="fa fa-recycle"></i>
                          </button>
                        </form>
-
-                  </td>
+                    @endif
+                </td>
 
               </tr>
               @endif
@@ -107,10 +118,10 @@
           </tbody>
           <tfoot>
             <tr>
-              <th class="text-center">Responsable</th>
-              <th class="text-center">Fecha Inventario</th>
-              <th class="text-right">Monto</th>
-              <th class="text-center">Descripcion</th>
+              <th >Responsable</th>
+              <th >Fecha Inventario</th>
+              <th >Monto</th>
+              <th >Descripcion</th>
               <th class="text-center">Estado</th>
               <th class="text-center">Acciones</th>
             </tr>

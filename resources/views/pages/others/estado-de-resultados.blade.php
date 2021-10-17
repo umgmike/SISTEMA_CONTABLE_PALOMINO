@@ -321,7 +321,7 @@
         if ( isset($pdf) ) {
         $pdf->page_script('
         $font = $fontMetrics->get_font("Arial, Helvetica, sans-serif", "normal");
-        $pdf->text(270, 17, "{{ Auth::user()->nombreEmpresa }}", $font, 12);
+        $pdf->text(270, 17, "{{ Auth::user()->nombre_establecimiento }}", $font, 12);
         $pdf->text(210, 29, "{{ Auth::user()->nombrePropietario }}", $font, 12);
         $pdf->text(240, 42, "Estado de resultados", $font, 12);
         $pdf->text(230, 55, "Del 1°-01-{{ Auth::user()->AnyoContable }} Al  {{ $a->fechaf }}", $font, 12);
